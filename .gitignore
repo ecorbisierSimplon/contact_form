@@ -40,7 +40,9 @@ build/Release
 
 # Dependency directories
 node_modules/
+dist/
 jspm_packages/
+.dockerignore
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
