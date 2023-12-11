@@ -1,16 +1,17 @@
 # contact_form
 
+Install Docker-compose :
 
-Install Docker-compose : 
 ```nginx=
 sudo apt docker-compose
 ```
+
 make sur you are on the late version :
-```nginx= sudo apt update ```
+```nginx= sudo apt update```
 
 Your have install Docker compose.
 
-##  Create Docker Image for project
+## Create Docker Image for project
 
 1. Open docker-compose.yml
 2. Copy or change and copy name to image of web service (by default : projetformcontact)
@@ -21,8 +22,8 @@ Your have install Docker compose.
 npm install
 ```
 
-5. you can run the docker-compose with 
+5. you can run the docker-compose with
 
-```nginx= 
+```nginx=
 docker-compose up 
 ```
