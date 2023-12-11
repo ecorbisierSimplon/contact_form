@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   postgres_db:
-    container_name: postgres_db
+    container_name: postgres_db_contact_form
     image: postgres
     restart: always
     environment:
@@ -17,7 +17,8 @@ services:
       - "5433:5432"
   
   adminer:
-    container_name: adminer
+    container_name: adminer_contact_form
+  
     image: adminer
     restart: always
     ports:
