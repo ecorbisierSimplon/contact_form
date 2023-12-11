@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    container_name: Form_Contact
+    container_name: Contact_Form
     image: projet_contact_form
     build:
       context: .
@@ -14,6 +14,8 @@ services:
       - PORT=8000
     volumes:
       - ${PWD}/src:/app/src
+      - ${PWD}/dist:/app/dist
+
     working_dir: /app
     command: [ "npm", "run", "dev" ]
 
