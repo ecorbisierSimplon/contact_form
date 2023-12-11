@@ -1,10 +1,4 @@
-# Utilisez une image de base appropriée avec Node.js
-FROM node
-
-# Mise à jour des packages et installation de Node.js et npm
-RUN apt-get update && \
-    apt-get install -y nodejs && \
-    apt-get install -y npm
+FROM node:21
 
 # Installation de nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
@@ -19,24 +13,35 @@ RUN nvm install 21 && \
 # Définir le répertoire de travail
 WORKDIR /app
 
+# Copier le fichier package.json dans le conteneur
+COPY package.json /app/package.json
+
+# Installation des dépendances du projet
+RUN npm install
+
 # Copier les fichiers de votre application dans le conteneur
 COPY . /app
 
 # Installation des dépendances du projet
-RUN npm cache clean --force && \
-    npm install express-session && \
-    npm install @types/express-session --save-dev && \
-    npm cache clean --force
-
-
-# Copier les fichiers de votre application dans le conteneur
-COPY package.json /app/package.json
-
-# Copier le script de démarrage dans le conteneur
-COPY start.js /app/start.js
+RUN npm install
 
 # Installation des dépendances du projet
-RUN npm install
+RUN npm install express && \
+    npm install express-session && \
+    npm install @types/express-session --save-dev
+
+
+# Copier le fichier tsconfig.json dans le conteneur
+COPY tsconfig.json /app/tsconfig.json
+
+
+# Compilation du projet TypeScript
+RUN npm install typescript@5.3.2 && \
+    npm run build
+
+# Exposez le port sur lequel l'application s'exécute (si nécessaire)
+EXPOSE 8000
+
 
 # Commande par défaut pour démarrer votre application
 CMD ["node", "start.js"]

@@ -15,15 +15,14 @@ Your have install Docker compose.
 1. Open docker-compose.yml
 2. Copy or change and copy name to image of web service (by default : projetformcontact)
 3. Save docker-compose.yml
-4. Edit in terminal :
+4. Edit in terminal for installing dependancies in local:
 
 ```nginx
-docker build -t <name_to_your_image>
+npm install
 ```
 
+5. you can run the docker-compose with 
 
-
-you can run the docker-compose with 
 ```nginx= 
-Docker-compose up 
+docker-compose up 
 ```
