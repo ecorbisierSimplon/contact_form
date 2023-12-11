@@ -25,5 +25,5 @@ npm install
 5. you can run the docker-compose with
 
 ```nginx=
-docker-compose up 
+docker-compose up -d
 ```

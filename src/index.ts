@@ -33,6 +33,13 @@ app.listen(port, () => {
 });
 app.use(express.static('styles'));
 
+
+app.get('/', async (req: Request, res: Response) => {
+
+    res.send('hello word bonjour test');
+
+
+});
 // import "./routes/home";
 // import "./routes/login";
 // import "./routes/logout";
