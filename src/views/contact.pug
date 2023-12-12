@@ -9,6 +9,7 @@ block content
       // Afficher le message si présent
       p(class='success')= messageSuccess
       a(href='/') Revenir à Home <br>
+
     else
 
       form(action='/submit-contact' class="formulaire")
@@ -24,8 +25,10 @@ block content
         if messageErrorFirstname
           span(class='error')= messageErrorFirstname
 
+
         label(for='lastname' class='label') Last name :
         input(type='text', id='lastname', name='lastname', required class="input", value= getlastname)
+
         if messageErrorLastname
           span(class='error')= messageErrorLastname
         
@@ -33,11 +36,13 @@ block content
         input(type='email', id='email', name='email', required class="input", value= getemail )
         if messageErrorEmail
           span(class='error')= messageErrorEmail
+
           
         label(for='message' class='label') Message :
         input(type='message', id='message' ,name='message', required class="input", value= getmessage)   
         if messageErrorMessage 
           span(class='error')= messageErrorMessage
+
 
         button(type='submit' class='button') Submit
 
