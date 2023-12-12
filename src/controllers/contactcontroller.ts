@@ -1,4 +1,4 @@
-import { firstname, lastname, email, confirmation } from "../routes/contact";
+import { firstname, lastname, email } from "../routes/contact";
 
 export class ControllerUser {
   private static nameRegex = /^[A-Za-z\-]+$/;

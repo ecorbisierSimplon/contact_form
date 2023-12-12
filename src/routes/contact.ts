@@ -13,9 +13,7 @@ export let subject : string;
 export let email: string;
 export let lastname: string;
 export let firstname: string;
-export let confirmation: string;
 export let currentDate: Date;
-export let isValid: boolean;
 export let message: string;
 export let errors_message: { [key: string]: string };
 
@@ -37,7 +35,7 @@ app.get ("/contact" , async (req: Request, res: Response) => {
     // traitement de la réponse isValid
 
         if ("") {
-          res.status(500).render("register", {
+          res.status(500).render("contact", {
             pageTitle: "Contact",
             messageNosuccess: "Error !",
             messageErrorEmail: errors_message.email,

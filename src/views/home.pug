@@ -3,9 +3,4 @@ extends layout.pug
 block content
   section(class="section_form") 
     h1 Bienvenue 
-    ul
-      if blogs
-        each blog in blogs
-          li
-            a(href=`/contact`)= "contactez-nous"
-
+    a(href=`/contact`)= "contactez-nous"
