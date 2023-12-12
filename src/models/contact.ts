@@ -1,28 +1,18 @@
-import {
-  email,
-  lastname,
-  firstname,
-} from "../routes/contact";
-import client from "../database";
+import client from '../database';
+import { subject, firstname, lastname, email, message } from "../routes/contact";
 
+export class Contact {
 
-export async function insertUser(currentDate: Date): Promise<void> {
+  static async register(): Promise<boolean> {
+    try {
+      const values = [subject, firstname, lastname, email, message, "NOW"];
+      const query = 'INSERT INTO formulaire (subject, last_name, first_name, email, message, date_create) VALUES ($1, $2,$3, $4,$5, $6)';
 
-  try {
-    const query =
-      "INSERT INTO users (first_name, last_name, email, date_create) VALUES ($1, $2, $3, $4)";
-    const values = [
-      firstname,
-      lastname,
-      email,
-      currentDate,
-    ];
-
-    await client.query(query, values);
-
-    console.log("Data inserted successfully");
-  } catch (error) {
-    console.error("Error inserting data:", error);
-    throw error; // Propager l'erreur pour la gérer dans la route
-  }
+      await client.query(query, values);
+    } catch (error) {
+      console.error('Erreur lors de la sauvegarde des données :', error);
+      return false
+    }
+    return true;
+  };
 }

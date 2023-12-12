@@ -3,12 +3,13 @@ extends ./layout.pug
 block content
 
   section(class="section_form")
-    // Afficher le formulaire sinon
+    //- Afficher le formulaire sinon
     h1= pageTitle
+    
     if messageSuccess
-      // Afficher le message si présent
+      //- Afficher le message si présent
       p(class='success')= messageSuccess
-      a(href='/') Revenir à Home <br>
+      a(href='/')= "retourner à l'accueil" <br>
 
     else
 
@@ -49,5 +50,5 @@ block content
 
           
     if messageNosuccess
-      // Afficher le message si présent
+      //- Afficher le message si présent
       p(class='error')= messageNosuccess
