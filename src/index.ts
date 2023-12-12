@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const app: Application = express();
-export const port = 8000;
+export const port = process.env.PORT || 8000;
 
 
 app.use(session({
@@ -17,9 +17,9 @@ app.use(session({
 
 
 //declare module 'express-session' {
-   // interface SessionData {
-      
-    //}
+// interface SessionData {
+
+//}
 //}
 // Configuration of the Pug rendering engine
 app.set("view engine", "pug");
