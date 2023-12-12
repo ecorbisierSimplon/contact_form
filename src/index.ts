@@ -36,7 +36,7 @@ app.use(express.static('styles'));
 
 app.get('/', async (req: Request, res: Response) => {
 
-    res.send('hello word bonjour à tous');
+    res.send('hello word bonjour petite corneille');
 
 
 });
