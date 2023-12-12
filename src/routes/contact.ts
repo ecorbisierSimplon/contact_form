@@ -1,53 +1,55 @@
-import express, { Express, Request, Response, Application } from "express";
+import express, { Express, Request, Response } from "express";
 import { app } from "../index";
-import { Contact } from "../models/contact";
-import { controllersContact} from "../controllers/controllersContact";
-
-
+import { MessageSendSave } from "../models/MessageSend";
+import { ControllersMessageSend } from "../controllers/controllersMessageSend";
 
 app.get("/contact", (req: Request, res: Response) => {
-  res.render("Contact", { pageTitle: "Contact" });
+  res.render("contact", { pageTitle: "Contact" });
 });
 
-export let subject: string;
-export let email: string;
-export let lastname: string;
-export let firstname: string;
-export let currentDate: Date;
-export let message: string;
-export let errors_message: { [key: string]: string };
-
-app.get("/contact", async (req: Request, res: Response) => {
+app.post("/submit-contact", async (req: Request, res: Response) => {
   // Récupération des données du formulaire à partir de la requête
-  subject = req.query.subject as string;
-  lastname = req.query.lastname as string;
-  firstname = req.query.firstname as string;
-  email = req.query.email as string;
-  currentDate = new Date();
-  message = req.query.message as string;
-  errors_message = {};
+  console.log(req.body);
+  const {
+    lastname,
+    firstname,
+    email,
+    phone,
+    subject,
+    message
+  } = req.body;
 
-  // AJOUT DES CLASSES DE CONTROLE
-  // 
-  // ControllerUser.validateUserInputs();
+  let messageSave: boolean = false;
+  let errors_message: { [key: string]: string | null } = {};
+
+
+  errors_message = ControllersMessageSend.validateMessageInputs(subject, lastname, firstname, email, phone, message);
+  console.log("routes contact : ");
+  console.log(errors_message);
 
   if (errors_message.validation === "true") {
-    // traitement de la réponse isValid
 
     try {
       // AJOUT DE L'ENVOIE DU MESSAGE PAR MAIL
+      console.log("routes contact : validation true");
 
-      // AJOUTER UN CONTROL DE REPONSE de Contact.register()
-      await Contact.register();
+      messageSave = await MessageSendSave.saveDatabase(subject, lastname, firstname, email, phone, message);
 
       // SI MESSAGE BIEN ENVOYÉ
-      res.status(201).render("register", {
-        pageTitle: "Form contact",
-        messageSuccess: "Message envoyé!",
-      });
+      if (messageSave) {
+        res.status(201).render("contact", {
+          pageTitle: "Nous contacter",
+          messageSuccess: "Message envoyé!",
+        });
 
-      // AJOUTER MESSAGE SI PAS ENVOYÉ OU SI PAS ENREGISTER
 
+      } else {
+        // AJOUTER MESSAGE SI PAS ENVOYÉ OU SI PAS ENREGISTER
+        res.status(500).render("contact", {
+          pageTitle: "Nous contacter",
+          messageNosuccess: "Erreur lors de l'enregistrement du message",
+        });
+      }
 
     } catch (error) {
       console.error("Error during contact:", error);
@@ -56,12 +58,14 @@ app.get("/contact", async (req: Request, res: Response) => {
         messageNosuccess: "Erreur lors de la prise de contact",
       });
     }
+
   } else {
-    res.status(304).render("contact", {
+    res.render("contact", {
       pageTitle: "Contact",
       messageNosuccess: "Error !",
       messageErrorSubject: errors_message.subject,
       messageErrorEmail: errors_message.email,
+      messageErrorPhone: errors_message.phone,
       messageErrorFirstname: errors_message.firstname,
       messageErrorLastname: errors_message.lastname,
       messageErrorMessage: errors_message.message,
@@ -70,6 +74,7 @@ app.get("/contact", async (req: Request, res: Response) => {
       getfirstname: firstname,
       getemail: email,
       getmessage: message,
+      getphone: phone
     });
   }
 });

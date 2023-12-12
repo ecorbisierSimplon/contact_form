@@ -9,38 +9,43 @@ block content
     if messageSuccess
       //- Afficher le message si présent
       p(class='success')= messageSuccess
-      a(href='/')= "retourner à l'accueil" <br>
+      a(href='/') retourner à l'accueil <br>
 
     else
 
-      form(action='/submit-contact' class="formulaire")
+      form(action='/submit-contact', method='POST', class="formulaire")
 
 
-        label(for='subject' class='label') Subject :
-        input(type='text', id='subject', name='subjest', required class="input", value= getsubject)
-        if messageErrorSubjet 
-          span(class='error')= messageErrorSubject 
-
-        label(for='firstname' class='label') First name :
+        label(for='firstname' class='label') First name* :
         input(type='text', id='firstname', name='firstname', required class="input", value= getfirstname)
         if messageErrorFirstname
           span(class='error')= messageErrorFirstname
 
 
-        label(for='lastname' class='label') Last name :
+        label(for='lastname' class='label') Last name* :
         input(type='text', id='lastname', name='lastname', required class="input", value= getlastname)
-
         if messageErrorLastname
           span(class='error')= messageErrorLastname
         
-        label(for='email' class='label') Email :
+        label(for='email' class='label') Email* :
         input(type='email', id='email', name='email', required class="input", value= getemail )
         if messageErrorEmail
           span(class='error')= messageErrorEmail
 
+        label(for='phone' class='label') Phone :
+        input(type='phone', id='phone', name='phone', class="input", value= getphone )
+        if messageErrorPhone
+          span(class='error')= messageErrorPhone
+
+
+        label(for='subject' class='label') Subject* :
+        input(type='text', id='subject', name='subject', required class="input", value= getsubject)
+        if messageErrorSubjet 
+          span(class='error')= messageErrorSubject 
+
           
-        label(for='message' class='label') Message :
-        input(type='message', id='message' ,name='message', required class="input", value= getmessage)   
+        label(for='message' class='label') Message* :
+        textarea(type='text', id='message', name='message', required class="input", value= getmessage)   
         if messageErrorMessage 
           span(class='error')= messageErrorMessage
 

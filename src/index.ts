@@ -1,6 +1,7 @@
 import express, { Express, Request, Response, Application } from "express";
-import session from 'express-session';
 import dotenv from "dotenv";
+import bodyParser from 'body-parser';
+
 
 //For env File
 dotenv.config();
@@ -8,19 +9,13 @@ dotenv.config();
 export const app: Application = express();
 export const port = process.env.PORT || 8000;
 
+// Ajoutez le middleware d'analyse de corps JSON
+app.use(bodyParser.json());
 
-app.use(session({
-    secret: 'your-secret-key',
-    resave: false,
-    saveUninitialized: true
-}));
+// Ajoutez le middleware pour les données de formulaire
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
-//declare module 'express-session' {
-// interface SessionData 
-
-//}
-//}
 // Configuration of the Pug rendering engine
 app.set("view engine", "pug");
 app.set("views", "./src/views");
