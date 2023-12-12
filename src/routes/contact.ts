@@ -1,7 +1,7 @@
 import express, { Express, Request, Response, Application } from "express";
 import { app } from "../index";
 import { Contact } from "../models/contact";
-import { ContactController } from "../controllers/contactcontroller";
+import { controllersContact} from "../controllers/controllersContact";
 
 
 
