@@ -9,6 +9,19 @@ export const app: Application = express();
 export const port = process.env.PORT || 8000;
 
 
+app.use(session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: true
+}));
+
+
+//declare module 'express-session' {
+// interface SessionData 
+
+//}
+//}
+// Configuration of the Pug rendering engine
 app.set("view engine", "pug");
 app.set("views", "./src/views");
 app.listen(port, () => {
