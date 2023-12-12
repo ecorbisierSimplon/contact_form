@@ -16,13 +16,11 @@ app.use(session({
 }));
 
 
-declare module 'express-session' {
-    interface SessionData {
-        loginIsValid: boolean;
-        loginIsAdmin: boolean;
-        // Add any other custom properties you might need
-    }
-}
+//declare module 'express-session' {
+   // interface SessionData {
+      
+    //}
+//}
 // Configuration of the Pug rendering engine
 app.set("view engine", "pug");
 app.set("views", "./src/views");
@@ -34,14 +32,8 @@ app.listen(port, () => {
 app.use(express.static('styles'));
 
 
-app.get('/', async (req: Request, res: Response) => {
-
-    res.send('hello word bonjour petite corneille');
-
-
-});
-// import "./routes/home";
-// import "./routes/login";
+import "./routes/home";
+import "./routes/contact";
 // import "./routes/logout";
 // import "./routes/register";
 // import './routes/blog';
