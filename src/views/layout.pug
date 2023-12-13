@@ -7,24 +7,25 @@ html
             link(rel='stylesheet', type='text/css', href='./layout.css')  
     body
         header(class='header')
-            img(src='', alt='logo' class="logo_header")
+            img(src='https://wpformation.com/wp-content/uploads/2013/06/Blog.png', alt='logo' class="header__logo")
 
 
             nav(class='nav_bar')
-            a(href='/' class="link")=  "Accueil"
+                a(href='/')=  "Accueil"
+                a(href='/contact') Contactez-nous
                 
         block content
       
         footer(class='footer')
-            section(class="column_footer")
-                p(class="p_footer") Suivez Moi
+            section(class="column")
+                p Suivez Moi
                 img(src='https://www.griffith.edu.au/__data/assets/image/0026/259730/FB.png', alt='logo' class="icone")
 
 
-            img(src='https://wpformation.com/wp-content/uploads/2013/06/Blog.png', alt='logo' class="logo_footer")
+            img(src='https://wpformation.com/wp-content/uploads/2013/06/Blog.png', alt='logo' class="logo")
 
-            section(class="column_footer")
-                p(class="p_footer") 
+            section(class="column")
+                p
               
                 //- a refaire
             
