@@ -1,7 +1,7 @@
-import express, { Express, Request, Response, Application } from "express";
-import dotenv from "dotenv";
+import express, { Application } from "express";
 import bodyParser from 'body-parser';
-
+import dotenv from "dotenv";
+dotenv.config();
 
 //For env File
 dotenv.config();
@@ -9,12 +9,13 @@ dotenv.config();
 export const app: Application = express();
 export const port = process.env.PORT || 8000;
 
+console.log("PORT:", process.env.PORT);
+
 // Ajoutez le middleware d'analyse de corps JSON
 app.use(bodyParser.json());
 
 // Ajoutez le middleware pour les données de formulaire
 app.use(bodyParser.urlencoded({ extended: true }));
-
 
 // Configuration of the Pug rendering engine
 app.set("view engine", "pug");
