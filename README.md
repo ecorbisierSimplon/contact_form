@@ -1,12 +1,16 @@
 # contact_form
 
-Install Docker-compose :
+> [Download and install DockerDesktop](https://www.docker.com/products/docker-desktop/)
+
+
+> Install Docker-compose :
 
 ```nginx=
 sudo apt docker-compose
 ```
 
-make sur you are on the late version :
+> make sur you are on the late version :
+
 ```nginx= 
 sudo apt update
 ```
@@ -31,3 +35,7 @@ npm install
 ```nginx=
 docker-compose up -d
 ```
+
+> [Open web serveur for contact form](http://localhost:8000/)
+
+
