@@ -1,20 +1,21 @@
-import nodemailer from "nodemailer";
-//import Mail from "nodemailer/lib/mailer";
+import nodemailer, { Transporter } from "nodemailer";
+// import Mail from "nodemailer/lib/mailer"; // Cette ligne n'est pas nécessaire
 
 
 async function main() {
-  const = "hostname from account page";
-  const = "username from account page";
-  const = "password from account page";
+  const hostname = "hostname from account page";
+  const username = "username from account page";
+  const password = "password from account page";
 
-  const transporter = nodemailer.createTransport({
-    host: smtp.ionos.fr,
-    port: 465,
+  const transporter: Transporter = nodemailer.createTransport({
+    host: hostname,
+    port: 587,
     secure: false,
     requireTLS: true,
     auth: {
-      user: "ne_pas_repondre@corbisier.fr",
-      pass: "Einstein:2020#",
+      user: username,
+      pass: password,
     },
-    logger: true
-  });}
+    logger: true,
+  });
+}
