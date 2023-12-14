@@ -29,7 +29,7 @@ app.post("/submit-contact", async (req: Request, res: Response) => {
   console.log(errors_message);
 
   if (errors_message.validation === "true") {
-    main().catch(console.error);
+    main(subject, lastname, firstname, email, phone, message).catch(console.error);
     try {
       // AJOUT DE L'ENVOIE DU MESSAGE PAR MAIL
       console.log("routes contact : validation true");

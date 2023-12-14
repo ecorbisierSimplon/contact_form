@@ -16,10 +16,13 @@ body {
   flex-direction: row;
   justify-content: space-around;
   padding: 10px;
+  height: 50px;
 }
 .header__logo {
-  width: 60px;
-  height: 60px;
+  width: 129px;
+  height: 80px;
+  position: relative;
+  top: 25px;
 }
 .header .nav_bar {
   display: flex;
@@ -41,9 +44,7 @@ body {
 main {
   flex: 1;
   background: linear-gradient(to bottom, hsla(265, 27%, 83%, 0.8), hsla(307, 36%, 39%, 0.7));
-  margin: 5px auto;
-  padding: 20px 0;
-  width: 100vw;
+  padding: 5px 20px;
 }
 @media screen and (min-width: 600px) {
   main {
@@ -53,8 +54,7 @@ main {
 @media screen and (min-width: 768px) {
   main {
     margin: 5px auto;
-    min-width: 800px;
-    max-width: 1000px;
+    max-width: 900px;
   }
 }
 main h1 {
@@ -108,9 +108,7 @@ main form button:hover {
   padding: 20px;
 }
 .footer .icone {
-  width: 30px;
-  height: 30px;
-  margin-top: 10px;
+  width: 70px;
 }
 .footer p {
   text-transform: uppercase;

@@ -1,12 +1,9 @@
+import { JSDOM } from 'jsdom';
+
 export class HtmlText {
-    static htmlToPlainText(html: string) {
-        // Convertir le HTML en DOM
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-
-        // Obtenir le texte brut avec les retours à la ligne
-        const plainText = doc.body.innerText;
-
+    static htmlToPlainText(html: string): string {
+        const dom = new JSDOM(html);
+        const plainText = dom.window.document.body.innerText;
         return plainText;
     }
 }
