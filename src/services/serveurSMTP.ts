@@ -3,13 +3,13 @@ import nodemailer, { Transporter } from "nodemailer";
 
 
 async function main() {
-  const hostname = "hostname from account page";
-  const username = "username from account page";
-  const password = "password from account page";
+  const hostname = "smtp.ionos.fr";
+  const username = "ne_pas_repondre@corbisier.fr";
+  const password = "Einstein:2020#";
 
   const transporter: Transporter = nodemailer.createTransport({
     host: hostname,
-    port: 587,
+    port: 465,
     secure: false,
     requireTLS: true,
     auth: {
