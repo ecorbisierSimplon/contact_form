@@ -133,3 +133,5 @@ dist
 
 # postgres
 .database/db-data
+
+.styles/*.css
