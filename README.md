@@ -7,7 +7,9 @@ sudo apt docker-compose
 ```
 
 make sur you are on the late version :
-```nginx= sudo apt update```
+```nginx= 
+sudo apt update
+```
 
 Your have install Docker compose.
 
@@ -23,6 +25,8 @@ npm install
 ```
 
 5. you can run the docker-compose with
+ 
+> Run Docker before run this project :
 
 ```nginx=
 docker-compose up -d

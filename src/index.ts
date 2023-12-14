@@ -3,9 +3,6 @@ import bodyParser from 'body-parser';
 import dotenv from "dotenv";
 dotenv.config();
 
-//For env File
-dotenv.config();
-
 export const app: Application = express();
 export const port = process.env.PORT || 8000;
 

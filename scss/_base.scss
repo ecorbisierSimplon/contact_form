@@ -47,8 +47,17 @@ main {
     flex: 1;
     background: linear-gradient(to bottom, hsla($color_p, 27%, 83%, 0.8), hsla($color_p-2, 36%, 39%, 0.7));
     margin: 5px auto;
-    padding: 20px;
-    width: auto;
+    padding: 20px 0;
+    width: 100vw;
+    @include gd-tablet-min {
+        width: 95vw;
+    }
+
+    @include pt-screen-min {
+        margin: 5px auto;
+        min-width: 800px;
+        max-width: 1000px;
+    }
     h1 {
         text-align: center;
         margin-top: 0;
@@ -56,10 +65,11 @@ main {
     p {
         text-align: justify;
     }
+
     form {
         display: flex;
         flex-direction: column;
-        padding: 5px 40px;
+        padding: 5px 25px;
         gap: 20px;
         div {
             display: flex;
