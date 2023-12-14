@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from "express";
 import { app } from "../index";
 import { MessageSendSave } from "../models/MessageSend";
 import { ControllersMessageSend } from "../controllers/controllersMessageSend";
+import { main } from "../services/MessageSend";
 
 app.get("/contact", (req: Request, res: Response) => {
   res.render("contact", { pageTitle: "Contact" });
@@ -28,7 +29,7 @@ app.post("/submit-contact", async (req: Request, res: Response) => {
   console.log(errors_message);
 
   if (errors_message.validation === "true") {
-
+    main().catch(console.error);
     try {
       // AJOUT DE L'ENVOIE DU MESSAGE PAR MAIL
       console.log("routes contact : validation true");

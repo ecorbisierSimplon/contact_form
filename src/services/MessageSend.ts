@@ -1,15 +1,15 @@
-import {transporter} from "./serveurSMTP"
+import { transporter } from "./serveurSMTP"
 
-async function main() {
+export async function main() {
   // send mail with defined transport object
   const info = await transporter.sendMail({
-    from: '"Fred Foo 👻" <foo@example.com>', // sender address
-    to: "bar@example.com, baz@example.com", // list of receivers
+    from: '"Fred Foo 👻" <ne_pas_repondre@corbisier.fr>', // sender address
+    to: "eric@corbisier.fr", // list of receivers
     subject: "Hello ✔", // Subject line
     text: "Hello world?", // plain text body
     html: "<b>Hello world?</b>", // html body
   });
 
-console.log("Message sent: %s", info.messageId);
+  console.log("Message sent: %s", info.messageId);
 }
-main().catch(console.error);
+
