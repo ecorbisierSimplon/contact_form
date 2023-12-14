@@ -132,7 +132,7 @@ dist
 
 
 # postgres
-.database/db-data
+database/db-data
 
 # CSS
 styles/*.css
