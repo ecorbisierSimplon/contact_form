@@ -38,4 +38,6 @@ docker-compose up -d
 
 > [Open web serveur for contact form](http://localhost:8000/)
 
+Now you can use our contact-form
+
 
