@@ -77,12 +77,13 @@ main form {
   display: flex;
   flex-direction: column;
   padding: 5px 25px;
-  gap: 20px;
+  gap: 10px;
 }
 @media screen and (min-width: 768px) {
   main form {
     max-width: 70%;
     margin: 0 auto;
+    gap: 20px;
   }
 }
 main form div {
@@ -97,25 +98,51 @@ main form div textarea {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 16px;
 }
+main form div input:invalid,
+main form div textarea:invalid {
+  border: 1px solid red;
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  transform: translate3d(0, 0, 0);
+}
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
 main form div textarea {
   height: 100px;
 }
 main form button {
   font-weight: bold;
-  width: 30%;
+  width: auto;
   background-color: hsl(265, 69%, 31%);
   font-size: 1.05em;
   color: white;
   margin: 5px auto;
   border: none;
   border-radius: 3px;
-  padding: 16px 20px;
+  padding: 8px 10px;
   cursor: pointer;
 }
 main form button:hover {
   box-shadow: 1px 2px 6px 0px hsl(265, 66%, 14%);
   background-color: hsl(265, 33%, 66%);
   color: hsl(265, 69%, 31%);
+}
+@media screen and (min-width: 600px) {
+  main form button {
+    width: 30%;
+    padding: 16px 20px;
+  }
 }
 
 .footer {

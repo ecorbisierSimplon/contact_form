@@ -79,10 +79,11 @@ main {
         display: flex;
         flex-direction: column;
         padding: 5px 25px;
-        gap: 20px;
+        gap: 10px;
         @include pt-screen-min {
             max-width: 70%;
             margin: 0 auto;
+            gap: 20px;
         }
 
         div {
@@ -95,6 +96,34 @@ main {
                 border: 1px solid #d1d1d1;
                 font-family: Verdana, Geneva, Tahoma, sans-serif;
                 font-size: 16px;
+                &:invalid {
+                    border: 1px solid red;
+                    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+                    transform: translate3d(0, 0, 0);
+                }
+
+                @keyframes shake {
+                    10%,
+                    90% {
+                        transform: translate3d(-1px, 0, 0);
+                    }
+
+                    20%,
+                    80% {
+                        transform: translate3d(2px, 0, 0);
+                    }
+
+                    30%,
+                    50%,
+                    70% {
+                        transform: translate3d(-4px, 0, 0);
+                    }
+
+                    40%,
+                    60% {
+                        transform: translate3d(4px, 0, 0);
+                    }
+                }
             }
             textarea {
                 height: 100px;
@@ -102,19 +131,23 @@ main {
         }
         button {
             font-weight: bold;
-            width: 30%;
+            width: auto;
             background-color: hsl($color_p, 69%, 31%);
             font-size: 1.05em;
             color: white;
             margin: 5px auto;
             border: none;
             border-radius: 3px;
-            padding: 16px 20px;
+            padding: 8px 10px;
             cursor: pointer;
             &:hover {
                 box-shadow: 1px 2px 6px 0px hsl($color_p, 66%, 14%);
                 background-color: hsl($color_p, 33%, 66%);
                 color: hsl($color_p, 69%, 31%);
+            }
+            @include gd-tablet-min {
+                width: 30%;
+                padding: 16px 20px;
             }
         }
     }
