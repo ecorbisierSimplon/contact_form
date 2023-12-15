@@ -5,7 +5,7 @@ import { ControllersMessageSend } from "../controllers/controllersMessageSend";
 import { main } from "../services/MessageSend";
 
 app.get("/contact", (req: Request, res: Response) => {
-  res.render("contact", { pageTitle: "Contact" });
+  res.render("contact", { pageTitle: "Contact", contact: true });
 });
 
 app.post("/submit-contact", async (req: Request, res: Response) => {
@@ -41,6 +41,7 @@ app.post("/submit-contact", async (req: Request, res: Response) => {
         res.status(201).render("contact", {
           pageTitle: "Nous contacter",
           messageSuccess: "Votre message a bien été envoyé !",
+          contact: true
         });
 
 
@@ -49,6 +50,7 @@ app.post("/submit-contact", async (req: Request, res: Response) => {
         res.status(500).render("contact", {
           pageTitle: "Nous contacter",
           messageNosuccess: "Erreur lors de l'enregistrement du message",
+          contact: true
         });
       }
 
@@ -57,6 +59,7 @@ app.post("/submit-contact", async (req: Request, res: Response) => {
       res.status(500).render("contact", {
         pageTitle: "Contact",
         messageNosuccess: "Erreur lors de la prise de contact",
+        contact: true
       });
     }
 
@@ -75,7 +78,8 @@ app.post("/submit-contact", async (req: Request, res: Response) => {
       getfirstname: firstname,
       getemail: email,
       getmessage: message,
-      getphone: phone
+      getphone: phone,
+      contact: true
     });
   }
 });

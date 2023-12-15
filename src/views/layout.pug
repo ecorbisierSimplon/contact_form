@@ -12,12 +12,11 @@ html
         header(class='header')
             img(src='virusgaminglogo.png', alt='logo' class="header__logo")
 
-
             nav(class='nav_bar')
-                a(href='/')
+                a(href='/', class=(accueil ? 'live' : ''))
                     i(class="fa fa-home") 
                     span Accueil
-                a(href='/contact')
+                a(href='/contact', class=(contact ? 'live' : ''))
                     i(class="fa fa-envelope") 
                     span Contactez-nous
                 

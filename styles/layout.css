@@ -46,6 +46,9 @@ a i {
 .header .nav_bar a {
   padding: 10px 20px;
 }
+.header .nav_bar a.live {
+  background-color: hsl(307, 50%, 68%);
+}
 
 main {
   flex: 1;

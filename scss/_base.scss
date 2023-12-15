@@ -46,6 +46,9 @@ a {
         display: flex;
         a {
             padding: 10px 20px;
+            &.live {
+                background-color: hsl($color_p-2, 50%, 68%);
+            }
         }
     }
 }
