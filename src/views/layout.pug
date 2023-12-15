@@ -7,14 +7,19 @@ html
 
         block styles
             link(rel='stylesheet', type='text/css', href='./layout.css')  
+            link( rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
     body
         header(class='header')
             img(src='virusgaminglogo.png', alt='logo' class="header__logo")
 
 
             nav(class='nav_bar')
-                a(href='/')=  "Accueil"
-                a(href='/contact') Contactez-nous
+                a(href='/')
+                    i(class="fa fa-home") 
+                    span Accueil
+                a(href='/contact')
+                    i(class="fa fa-envelope") 
+                    span Contactez-nous
                 
         block content
       

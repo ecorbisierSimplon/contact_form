@@ -40,7 +40,7 @@ app.post("/submit-contact", async (req: Request, res: Response) => {
       if (messageSave) {
         res.status(201).render("contact", {
           pageTitle: "Nous contacter",
-          messageSuccess: "Message envoyé!",
+          messageSuccess: "Votre message a bien été envoyé !",
         });
 
 

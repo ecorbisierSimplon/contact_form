@@ -12,27 +12,38 @@ block content
       p(class='error')= messageNosuccess
     if messageSuccess
       //- Afficher le message si présent
-      p(class='success')= messageSuccess
-      a(href='/') retourner à l'accueil <br>
+      div(class="message__send")
+        img(src='message_send.png', alt='message send')
+        p(class='success')= messageSuccess
+        a(href='/') retourner à l'accueil <br>
 
     else
 
       form(action='/submit-contact', method='POST', class="form form--send_message")
 
         div
-          label(for='firstname') First name* :
+          label(for='firstname') 
+            span First name
+            span(class="alert") &nbsp;*&nbsp;
+            span :
           input(type='text', id='firstname', name='firstname', required, value= getfirstname)
           if messageErrorFirstname
             span(class='error')= messageErrorFirstname
 
         div
-          label(for='lastname') Last name* :
+          label(for='lastname') 
+            span Last name
+            span(class="alert") &nbsp;*&nbsp;
+            span : 
           input(type='text', id='lastname', name='lastname', required, value= getlastname)
           if messageErrorLastname
             span(class='error')= messageErrorLastname
         
         div
-          label(for='email') Email* :
+          label(for='email') 
+            span Email
+            span(class="alert") &nbsp;*&nbsp;
+            span : 
           input(type='email', id='email', name='email', required, value= getemail )
           if messageErrorEmail
             span(class='error')= messageErrorEmail
@@ -44,13 +55,19 @@ block content
             span(class='error')= messageErrorPhone
 
         div
-          label(for='subject') Subject* :
+          label(for='subject')
+            span Subject
+            span(class="alert") &nbsp;*&nbsp;
+            span : 
           input(type='text', id='subject', name='subject', required, value= getsubject)
           if messageErrorSubject 
             span(class='error')= messageErrorSubject 
 
         div          
-          label(for='message') Message* :
+          label(for='message')
+            span Message
+            span(class="alert") &nbsp;*&nbsp;
+            span : 
           textarea(type='text', id='message', name='message', required)= getmessage
           if messageErrorMessage 
             span(class='error')= messageErrorMessage
@@ -58,5 +75,5 @@ block content
 
         button(type='submit') Submit
 
-        p * : champs obligatoire
+        p(class="alert") * : champs obligatoire
 
