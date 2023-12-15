@@ -8,39 +8,42 @@ body {
     font-size: 16px;
 }
 
+a {
+    display: flex;
+    text-decoration: none;
+    color: black;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        background-color: hsl($color_p, 50%, 79%);
+        box-shadow: 1px 2px 6px 0px hsl($color_p, 66%, 14%);
+    }
+    i {
+        font-size: 24px;
+        margin-right: 5px;
+    }
+}
 .header {
     background-color: $bck-color-primary;
     font-size: 18px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding: 10px;
-    height: 50px;
 
     &__logo {
         width: 129px;
         height: 80px;
         position: relative;
-        top: 25px;
+        // top: 25px;
     }
 
     .nav_bar {
         display: flex;
         a {
-            display: flex;
-            // gap: 40px;
-            text-decoration: none;
-            color: black;
-            margin: auto 5px;
-            border-radius: 3px;
-            // border: solid 1px black;
             padding: 10px 20px;
-            justify-content: center;
-
-            &:hover {
-                background-color: hsl($color_p, 50%, 79%);
-                box-shadow: 1px 2px 6px 0px hsl($color_p, 66%, 14%);
-            }
         }
     }
 }
@@ -72,6 +75,11 @@ main {
         flex-direction: column;
         padding: 5px 25px;
         gap: 20px;
+        @include pt-screen-min {
+            max-width: 70%;
+            margin: 0 auto;
+        }
+
         div {
             display: flex;
             flex-direction: column;
@@ -90,14 +98,18 @@ main {
         button {
             font-weight: bold;
             width: 30%;
-            background-color: #c5baf0;
+            background-color: hsl($color_p, 69%, 31%);
+            font-size: 1.05em;
+            color: white;
             margin: 5px auto;
             border: none;
-            padding: 10px;
-            border-radius: 20px;
+            border-radius: 3px;
+            padding: 16px 20px;
             cursor: pointer;
             &:hover {
                 box-shadow: 1px 2px 6px 0px hsl($color_p, 66%, 14%);
+                background-color: hsl($color_p, 33%, 66%);
+                color: hsl($color_p, 69%, 31%);
             }
         }
     }
@@ -114,6 +126,7 @@ main {
 
     .icone {
         width: 70px;
+        height: auto;
     }
     p {
         text-transform: uppercase;
@@ -121,11 +134,40 @@ main {
     }
     .logo {
         width: 80px;
-        height: 80px;
+        height: calc(80px * 80 / 129);
     }
 }
 
-.error {
+.message {
+    &__send {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 100px;
+        }
+        .success {
+            font-size: 1.4em;
+            color: hsl(0, 96%, 18%);
+            text-shadow: 2px 2px 5px hsl($color_p, 40%, 48%);
+        }
+        a {
+            background-color: hsl(307deg 42.7% 30.45%);
+            color: white;
+            border-radius: 5px;
+            margin-top: 24px;
+            padding: 10px 20px;
+            &:hover {
+                background-color: hsl($color_p-2, 61%, 75%);
+                color: hsl($color_p-2, 43%, 30%);
+            }
+        }
+    }
+}
+
+.error,
+.alert {
     color: red;
     font-weight: bold;
 }

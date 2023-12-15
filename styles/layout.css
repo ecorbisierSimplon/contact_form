@@ -9,36 +9,41 @@ body {
   font-size: 16px;
 }
 
+a {
+  display: flex;
+  text-decoration: none;
+  color: black;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+a:hover {
+  background-color: hsl(265, 50%, 79%);
+  box-shadow: 1px 2px 6px 0px hsl(265, 66%, 14%);
+}
+a i {
+  font-size: 24px;
+  margin-right: 5px;
+}
+
 .header {
   background-color: hsl(265, 100%, 66%);
   font-size: 18px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding: 10px;
-  height: 50px;
 }
 .header__logo {
   width: 129px;
   height: 80px;
   position: relative;
-  top: 25px;
 }
 .header .nav_bar {
   display: flex;
 }
 .header .nav_bar a {
-  display: flex;
-  text-decoration: none;
-  color: black;
-  margin: auto 5px;
-  border-radius: 3px;
   padding: 10px 20px;
-  justify-content: center;
-}
-.header .nav_bar a:hover {
-  background-color: hsl(265, 50%, 79%);
-  box-shadow: 1px 2px 6px 0px hsl(265, 66%, 14%);
 }
 
 main {
@@ -70,6 +75,12 @@ main form {
   padding: 5px 25px;
   gap: 20px;
 }
+@media screen and (min-width: 768px) {
+  main form {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+}
 main form div {
   display: flex;
   flex-direction: column;
@@ -88,15 +99,19 @@ main form div textarea {
 main form button {
   font-weight: bold;
   width: 30%;
-  background-color: #c5baf0;
+  background-color: hsl(265, 69%, 31%);
+  font-size: 1.05em;
+  color: white;
   margin: 5px auto;
   border: none;
-  padding: 10px;
-  border-radius: 20px;
+  border-radius: 3px;
+  padding: 16px 20px;
   cursor: pointer;
 }
 main form button:hover {
   box-shadow: 1px 2px 6px 0px hsl(265, 66%, 14%);
+  background-color: hsl(265, 33%, 66%);
+  color: hsl(265, 69%, 31%);
 }
 
 .footer {
@@ -109,6 +124,7 @@ main form button:hover {
 }
 .footer .icone {
   width: 70px;
+  height: auto;
 }
 .footer p {
   text-transform: uppercase;
@@ -116,10 +132,37 @@ main form button:hover {
 }
 .footer .logo {
   width: 80px;
-  height: 80px;
+  height: 49.6124031008px;
 }
 
-.error {
+.message__send {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.message__send img {
+  width: 100px;
+}
+.message__send .success {
+  font-size: 1.4em;
+  color: hsl(0, 96%, 18%);
+  text-shadow: 2px 2px 5px hsl(265, 40%, 48%);
+}
+.message__send a {
+  background-color: hsl(307, 42.7%, 30.45%);
+  color: white;
+  border-radius: 5px;
+  margin-top: 24px;
+  padding: 10px 20px;
+}
+.message__send a:hover {
+  background-color: hsl(307, 61%, 75%);
+  color: hsl(307, 43%, 30%);
+}
+
+.error,
+.alert {
   color: red;
   font-weight: bold;
 }
