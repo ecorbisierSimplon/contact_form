@@ -38,6 +38,7 @@ a i {
   width: 129px;
   height: 80px;
   position: relative;
+  top: 21px;
 }
 .header .nav_bar {
   display: flex;

@@ -12,8 +12,8 @@ services:
       - "8000:8000"
       - "9229:9229"
     env_file:
-      - docker-compose.env
-      - SMTP.env
+      - ${PWD}/build/docker-compose.env
+      - ${PWD}/build/SMTP.env
     volumes:
       - ${PWD}/src:/app/src
       - ${PWD}/styles:/app/styles
@@ -29,7 +29,7 @@ services:
     image: postgres
     restart: always
     env_file:
-      - docker-compose.env
+      - ${PWD}/build/docker-compose.env
     volumes:
       - ./DataBase/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:

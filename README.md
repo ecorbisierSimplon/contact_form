@@ -17,6 +17,9 @@ sudo apt update
 
 Your have install Docker compose.
 
+>Change database environment variables in './build/docker-compose.env'
+>and for the SMTP server in './build/SMTP.env'
+
 ## Create Docker Image for project
 
 1. Open docker-compose.yml
