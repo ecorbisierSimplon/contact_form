@@ -4,8 +4,10 @@ import { MessageSendSave } from "../models/MessageSend";
 import { ControllersMessageSend } from "../controllers/controllersMessageSend";
 import { main } from "../services/MessageSend";
 
+const pageTitleContact: string = "Contact us";
+
 app.get("/contact", (req: Request, res: Response) => {
-  res.render("contact", { pageTitle: "Contact", contact: true });
+  res.render("contact", { pageTitle: pageTitleContact, contact: true });
 });
 
 app.post("/submit-contact", async (req: Request, res: Response) => {
@@ -39,8 +41,8 @@ app.post("/submit-contact", async (req: Request, res: Response) => {
       // SI MESSAGE BIEN ENVOYÉ
       if (messageSave) {
         res.status(201).render("contact", {
-          pageTitle: "Nous contacter",
-          messageSuccess: "Votre message a bien été envoyé !",
+          pageTitle: pageTitleContact,
+          messageSuccess: "Your message has been sent!",
           contact: true
         });
 
@@ -48,8 +50,8 @@ app.post("/submit-contact", async (req: Request, res: Response) => {
       } else {
         // AJOUTER MESSAGE SI PAS ENVOYÉ OU SI PAS ENREGISTER
         res.status(500).render("contact", {
-          pageTitle: "Nous contacter",
-          messageNosuccess: "Erreur lors de l'enregistrement du message",
+          pageTitle: pageTitleContact,
+          messageNosuccess: "Error saving message in database",
           contact: true
         });
       }
@@ -57,15 +59,15 @@ app.post("/submit-contact", async (req: Request, res: Response) => {
     } catch (error) {
       console.error("Error during contact:", error);
       res.status(500).render("contact", {
-        pageTitle: "Contact",
-        messageNosuccess: "Erreur lors de la prise de contact",
+        pageTitle: pageTitleContact,
+        messageNosuccess: "Contact error",
         contact: true
       });
     }
 
   } else {
     res.render("contact", {
-      pageTitle: "Contact",
+      pageTitle: pageTitleContact,
       messageNosuccess: "Error !",
       messageErrorSubject: errors_message.subject,
       messageErrorEmail: errors_message.email,

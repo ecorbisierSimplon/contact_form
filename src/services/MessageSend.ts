@@ -13,7 +13,5 @@ export async function main(subject: string, lastname: string, firstname: string,
     text: HtmlText.htmlToPlainText(userMessage), // plain text body
     html: userMessage, // html body
   });
-
-  console.log("Message sent: %s", info.messageId);
 }
 
