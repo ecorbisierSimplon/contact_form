@@ -4,5 +4,5 @@ node_modules
 Dockerfile
 npm-debug.log
 .git/
-Database
+DataBase
 docker-compose.yml
