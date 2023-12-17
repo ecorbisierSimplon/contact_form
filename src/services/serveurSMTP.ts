@@ -10,6 +10,7 @@ const secureTsl: boolean = process.env.SMTP_SECURE_TSL === "true" || false;
 const port = parseInt(process.env.SMTP_PORT || "1025", 10);
 const nodemailer = require("nodemailer");
 
+
 interface MailerConfig {
   host: string;
   port: number;

@@ -19,8 +19,8 @@ a {
   align-items: center;
 }
 a:hover {
-  background-color: hsl(265, 50%, 79%);
-  box-shadow: 1px 2px 6px 0px hsl(265, 66%, 14%);
+  background-color: hsl(266, 50%, 79%);
+  box-shadow: 1px 2px 6px 0px hsl(266, 66%, 14%);
 }
 a i {
   font-size: 24px;
@@ -28,7 +28,7 @@ a i {
 }
 
 .header {
-  background-color: hsl(265, 100%, 66%);
+  background-color: hsl(266, 100%, 66%);
   font-size: 18px;
   display: flex;
   flex-direction: row;
@@ -52,7 +52,7 @@ a i {
 
 main {
   flex: 1;
-  background: linear-gradient(to bottom, hsla(265, 27%, 83%, 0.8), hsla(307, 36%, 39%, 0.7));
+  background: linear-gradient(to bottom, hsla(266, 27%, 83%, 0.8), hsla(307, 36%, 39%, 0.7));
   padding: 5px 20px;
 }
 @media screen and (min-width: 600px) {
@@ -124,7 +124,7 @@ main form div textarea {
 main form button {
   font-weight: bold;
   width: auto;
-  background-color: hsl(265, 69%, 31%);
+  background-color: hsl(266, 69%, 31%);
   font-size: 1.05em;
   color: white;
   margin: 5px auto;
@@ -134,9 +134,9 @@ main form button {
   cursor: pointer;
 }
 main form button:hover {
-  box-shadow: 1px 2px 6px 0px hsl(265, 66%, 14%);
-  background-color: hsl(265, 33%, 66%);
-  color: hsl(265, 69%, 31%);
+  box-shadow: 1px 2px 6px 0px hsl(266, 66%, 14%);
+  background-color: hsl(266, 33%, 66%);
+  color: hsl(266, 69%, 31%);
 }
 @media screen and (min-width: 600px) {
   main form button {
@@ -150,7 +150,7 @@ main form button:hover {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: hsl(265, 100%, 66%);
+  background-color: hsl(266, 100%, 66%);
   padding: 20px;
 }
 .footer .icone {
@@ -178,7 +178,7 @@ main form button:hover {
 .message__send .success {
   font-size: 1.4em;
   color: hsl(0, 96%, 18%);
-  text-shadow: 2px 2px 5px hsl(265, 40%, 48%);
+  text-shadow: 2px 2px 5px hsl(266, 40%, 48%);
 }
 .message__send a {
   background-color: hsl(307, 42.7%, 30.45%);

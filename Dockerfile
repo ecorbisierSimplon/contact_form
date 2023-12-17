@@ -7,9 +7,5 @@ WORKDIR /app
 # Copier le package.json pour installer les dépendances seulement
 COPY . /app/
 
-# RUN mkdir -p ./DataBase/postgres-data
-
-# RUN sudo chmod -R 777 ./DataBase/postgres-data
-
 # Installation des dépendances du projet
 RUN npm install
