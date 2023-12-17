@@ -12,8 +12,10 @@ services:
       - "8000:8000"
       - "9229:9229"
     env_file:
-      - ${PWD}/build/docker-compose.env
+      - ${PWD}/build/environnements.env
+      - ${PWD}/build/postgres.env
       - ${PWD}/build/SMTP.env
+      - ${PWD}/build/maildev.env
     volumes:
       - ${PWD}/src:/app/src
       - ${PWD}/styles:/app/styles
@@ -22,16 +24,17 @@ services:
     depends_on:
       - postgres_db
     working_dir: /app
-    command: [ "npm", "run", "dev" ]
+    command: npm run dev
 
   postgres_db:
     container_name: postgres_db_message
     image: postgres
     restart: always
     env_file:
-      - ${PWD}/build/docker-compose.env
+      - ${PWD}/build/postgres.env
     volumes:
-      - ./DataBase/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ${PWD}/DataBase/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ${PWD}/DataBase/postgres-data:/var/lib/postgresql/data
     ports:
       - "5433:5432"
 
@@ -45,3 +48,22 @@ services:
       ADMINER_DEFAULT_SERVER: "postgres_db"
     depends_on:
       - postgres_db
+
+  maildev:
+    container_name: devmail_contact_form
+    image: maildev/maildev
+    restart: always
+    env_file:
+      - ${PWD}/build/maildev.env
+    ports:
+      - "1080:1080"
+      - "1025:1025"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+
+volumes:
+  postgres-data:
+
+
