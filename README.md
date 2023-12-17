@@ -26,6 +26,7 @@ Your have install Docker compose.
 * POSTGRES_DB=\< name data-base \>
 * POSTGRES_USER=\< postgres's user name \>
 * POSTGRES_PASSWORD=\< postgres's password \>
+* POSTGRES_HOST=\< postgres's host : localhost or ip adress or domaine name or empty if use docker \>
 
 >for the SMTP server in './build/SMTP.env' (leave blank if using devmail):
 
@@ -68,8 +69,6 @@ docker-compose up -d
 
 Now you can use our contact-form
 
->if ./DataBase/postgres-data exist and generate error compilation then type in terminal :
 
-```nginx
-sudo chmod -R 777 ./DataBase/postgres-data
-``
+>ALERT:
+>For Windows, in docker-compose.yml, replace '${PWD}' by a point.

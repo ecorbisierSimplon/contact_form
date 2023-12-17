@@ -6,7 +6,7 @@ console.log(process.env.POSTGRES_USER);
 const { Client } = require('pg')
 const client = new Client({
   user: process.env.POSTGRES_USER,
-  host: 'postgres_db',
+  host: process.env.POSTGRES_HOST || 'postgres_db',
   database: process.env.POSTGRES_DB,
   password: process.env.POSTGRES_PASSWORD,
   port: 5432
