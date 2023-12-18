@@ -12,7 +12,6 @@ app.get("/contact", (req: Request, res: Response) => {
 
 app.post("/submit-contact", async (req: Request, res: Response) => {
   // Récupération des données du formulaire à partir de la requête
-  console.log(req.body);
   const {
     lastname,
     firstname,
@@ -27,14 +26,25 @@ app.post("/submit-contact", async (req: Request, res: Response) => {
 
 
   errors_message = ControllersMessageSend.validateMessageInputs(subject, lastname, firstname, email, phone, message);
-  console.log("routes contact : ");
-  console.log(errors_message);
 
   if (errors_message.validation === "true") {
-    main(subject, lastname, firstname, email, phone, message).catch(console.error);
+    let send_valid: boolean = false;
+    let addMessageSucces: string = " but your message has not sent!";
+
+    await main(subject, lastname, firstname, email, phone, message)
+      .then((success) => {
+        send_valid = true;
+        addMessageSucces = " and your message has been sent !"
+        console.log(`Email sent successfully: ${success}`);
+      })
+      .catch((error) => {
+        console.error(`Error sending email: ${error}`);
+      });
+
+    console.log(send_valid);
+
     try {
       // AJOUT DE L'ENVOIE DU MESSAGE PAR MAIL
-      console.log("routes contact : validation true");
 
       messageSave = await MessageSendSave.saveDatabase(subject, lastname, firstname, email, phone, message);
 
@@ -42,7 +52,7 @@ app.post("/submit-contact", async (req: Request, res: Response) => {
       if (messageSave) {
         res.status(201).render("contact", {
           pageTitle: pageTitleContact,
-          messageSuccess: "Your message has been sent!",
+          messageSuccess: "Your message has been saved " + addMessageSucces,
           contact: true
         });
 

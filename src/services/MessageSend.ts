@@ -9,11 +9,11 @@ const mail_name = process.env.SMTP_EMAIL_SEND_NAME || "Virus 👻";
 const mail_admin = process.env.EMAIL_ADMIN_RECEPT || "admin@gmail.com";
 const mail_img_sign = process.env.EMAIL_IMG_SIGN || "http://localhost:" + process.env.PORT + "/virusgaminglogo.png";
 
-export async function main(subject: string, lastname: string, firstname: string, email: string, phone: string, message: string) {
-  // send mail with defined transport object
-  message = message.replace(/\n/g, "<br>");
+export function main(subject: string, lastname: string, firstname: string, email: string, phone: string, message: string): Promise<boolean> {
+  return new Promise<boolean>((resolve, reject) => {  // send mail with defined transport object
+    message = message.replace(/\n/g, "<br>");
 
-  const mailTemplate = `
+    const mailTemplate = `
   <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -70,16 +70,27 @@ export async function main(subject: string, lastname: string, firstname: string,
   </html>
 `;
 
-  const userMessage = [lastname, firstname, email, phone, subject, message, mail_img_sign];
-  const mail = template(mailTemplate, ...userMessage);
+    const userMessage = [lastname, firstname, email, phone, subject, message, mail_img_sign];
+    const mail = template(mailTemplate, ...userMessage);
 
-  const info = await transporter.sendMail({
-    from: `"${mail_name}" <${mail_send}>`, // sender address
-    to: mail_admin, // list of receivers
-    replyTo: email, // "Reply-To" address
-    subject: subject, // Subject line
-    text: HtmlText.htmlToPlainText(mail), // plain text body
-    html: mail, // html body
+    const info = {
+      from: `"${mail_name}" <${mail_send}>`, // sender address
+      to: mail_admin, // list of receivers
+      replyTo: email, // "Reply-To" address
+      subject: subject, // Subject line
+      text: HtmlText.htmlToPlainText(mail), // plain text body
+      html: mail, // html body
+    };
+
+    transporter.sendMail(info, (err: Error | null, info: any): void => {
+      if (err) {
+        console.log(err);
+        reject(false); // Rejeter la promesse en cas d'échec
+      } else {
+        console.log('Message sent: %s', info.messageId);
+        resolve(true); // Résoudre la promesse en cas de succès
+      }
+    });
   });
 }
 
