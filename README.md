@@ -5,13 +5,13 @@
 
 > Install Docker-compose :
 
-```nginx=
+```nginx
 sudo apt docker-compose
 ```
 
 > make sur you are on the late version :
 
-```nginx= 
+```nginx
 sudo apt update
 ```
 
@@ -28,7 +28,7 @@ Your have install Docker compose.
 * POSTGRES_PASSWORD=\< postgres's password \>
 * POSTGRES_HOST=\< postgres's host : localhost or ip adress or domaine name or empty if use docker \>
 
->for the SMTP server in './build/SMTP.env' (leave blank if using devmail):
+>for the SMTP server in './build/SMTP.env' (leave blank if using maildev):
 
 * SMTP_HOST=\< ip adress or domaine name \>
 * SMTP_USERNAME=\< username server smtp \>
@@ -57,18 +57,17 @@ Your have install Docker compose.
 npm install
 ```
 
-5. you can run the docker-compose with
+5. You can run the docker-compose with
  
-> Run Docker before run this project :
+>Run Docker before run this project :
 
-```nginx=
+```nginx
 docker-compose up -d
 ```
 
 > [Open web serveur for contact form](http://localhost:8000/)
 
 Now you can use our contact-form
-
 
 >ALERT:
 >For Windows, in docker-compose.yml, replace '${PWD}' by a point.
