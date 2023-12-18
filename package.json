@@ -1,6 +1,6 @@
 {
   "name": "contact_form",
-  "version": "1.0.0",
+  "version": "1.0.36",
   "description": "A team project to create a contact form.",
   "main": "dist/index.js",
   "scripts": {
