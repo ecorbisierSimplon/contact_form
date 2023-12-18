@@ -6,3 +6,4 @@ npm-debug.log
 .git/
 DataBase
 docker-compose.yml
+*.env
